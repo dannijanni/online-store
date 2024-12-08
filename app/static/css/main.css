@@ -1,0 +1,124 @@
+html {
+     scroll-behavior: smooth;
+     overflow-x: hidden;
+}
+ a:link{
+     text-decoration: none!important;
+}
+ .d-flex {
+     display: flex;
+}
+ .flex-column {
+     flex-direction: column;
+}
+ #filter-btn {
+     margin-left: 0.9rem;
+     margin-top: 3rem;
+}
+.add-to-cart {
+  margin: 5px;
+}
+
+img.img-fluid.rounded-3 {
+  max-width: 90px;
+}
+ #prod-container {
+     margin-top: 3rem;
+}
+ #prod-card {
+     width:98%;
+}
+ #prod-card:hover {
+     scale: 1.07;
+     transition: .2s;
+}
+div.offcanvas.offcanvas-start.show {
+  min-width: 300px;
+  width: 27vw;
+}
+ h5.mb-0 {
+     font-weight: bold;
+     font-size: 100%;
+     color: #000000
+}
+ #sale-tag {
+     width: 55px;
+     height: 35px;
+     font-weight: bold;
+}
+ #recommend-tag {
+     color: red;
+}
+ div.d-flex.align-items-center {
+     text-align: center;
+}
+ li a p {
+     text-align: center;
+     margin-right: 2px;
+     margin-left: 2px;
+}
+ input.form-control {
+     align-self: center;
+     width: 25em;
+     min-width: 120px;
+     max-width: 500px;
+     margin-top: 8px;
+     margin-bottom: 7px;
+}
+ div a p {
+     color: black;
+}
+
+div.d-flex.justify-content-between.mb-2 {
+  width: 80%;
+}
+
+ #prod-img {
+     width: 37vw;
+     min-width: 5rem;
+}
+ #thumb {
+     width: 10vw;
+     margin-left: 2rem;
+}
+ #prod-detail-page {
+     margin-left: 2rem;
+     margin-top: 6rem;
+     margin-right: 3vw;
+}
+ #star-num {
+     color:black;
+     font-size: 1.4rem;
+}
+ #detail-table {
+     margin-bottom: 16rem;
+}
+ @media (min-width: 1025px) {
+     .h-custom {
+         height: 100vh !important;
+    }
+}
+ .card-registration .select-input.form-control[readonly]:not([disabled]) {
+     font-size: 1rem;
+     line-height: 2.15;
+     padding-left: .75em;
+     padding-right: .75em;
+}
+ .card-registration .select-arrow {
+     top: 13px;
+}
+ .bg-grey {
+     background-color: #eae8e8;
+}
+ @media (min-width: 992px) {
+     .card-registration-2 .bg-grey {
+         border-top-right-radius: 16px;
+         border-bottom-right-radius: 16px;
+    }
+}
+ @media (max-width: 991px) {
+     .card-registration-2 .bg-grey {
+         border-bottom-left-radius: 16px;
+         border-bottom-right-radius: 16px;
+    }
+}
