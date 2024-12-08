@@ -15,9 +15,9 @@ jobs:
 
       - name: Build and Test
         run: |
-          docker-compose up -d --build
+          docker compose up -d --build
           sleep 10
 
-          docker-compose run web ./manage.py test main.tests.URLTests.homepage
+          docker compose run web ./manage.py test main.tests.URLTests.homepage
 
-          docker-compose down
+          docker compose down
