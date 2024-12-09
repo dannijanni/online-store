@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import path, include
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,12 +56,15 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'guest_user',
+
+    'django_prometheus'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +74,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     'allauth.account.middleware.AccountMiddleware',
+]
+
+urlpatterns = [
+    path('metrics/', include('django_prometheus.urls')),  # Expose metrics at /metrics
 ]
 
 ROOT_URLCONF = 'salik_online_shop.urls'
@@ -161,3 +170,27 @@ AUTHENTICATION_BACKENDS = [
 # STRIPE_SECRET_KEY = ''
 
 LOGIN_REDIRECT_URL = '/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'elasticsearch': {
+            'level': 'ERROR',
+            'class': 'django_elasticsearch_dsl.loggers.ElasticsearchHandler',
+            'hosts': ['http://elasticsearch:9200'],
+            'index': 'django_logs-%Y-%m-%d',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'elasticsearch'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
